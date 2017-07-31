@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/AmberAAA/love/issues"
   },
-  "homepage": "https://github.com/AmberAAA/love#readme"
+  "homepage": "https://github.com/AmberAAA/love#readme",
+  "dependencies": {
+    "vue": "^2.4.2",
+    "webpack": "^3.4.1"
+  }
 }
