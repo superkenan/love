@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <script src="/js/vue.js"></script>
+    <script
+            src="http://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+  </head>
+  <body>
+  <div class="container" id="app">
+    <div class="header">
+      我的todo
+    </div>
+    <div class="body">
+
+    </div>
+  </div>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{
+        username:'',
+        password:'',
+        message:'123'
+      },
+      methods:{
+        login: function(){
+          $.ajax({
+            async:true,
+            contentType:'application/x-www-form-urlencoded',
+            url:'/login',
+            type:'POST',
+            data:{
+              username:$('#name').val(),
+              password:$('#password').val()
+            },
+            success:function(e){alert('123')}
+          })
+        }
+      }
+    })
+  </script>
+  </body>
+</html>
