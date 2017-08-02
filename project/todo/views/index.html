@@ -42,5 +42,47 @@
       }
     })
   </script>
+  <div id="app1">
+    <h1>条件与循环</h1>
+    <p v-if="seen">{{message}}</p>
+    <ul>
+      <li v-for="todo in todos">{{todo.text}}</li>
+    </ul>
+  </div>
+  <script>
+    var app1 = new Vue({
+      el:'#app1',
+      data:{
+        seen:false,
+        message:'你猜',
+        todos:[
+          {text:'英雄达拉崩吧'},
+          {text:'骑上最快的马'},
+          {text:'嘿嘿嘿'}
+        ]
+      }
+    })
+  </script>
+  <div class="app3">
+    <h1>组件化建设</h1>
+    <todo-items v-for="item in todos" v-bind:todo="item" v-bind:id="item.id"></todo-items>
+  </div>
+  <script>
+    Vue.component('todo-items',{
+      //现在todo-items 可以加收一个props,类似于自定义属性，这个属性名为todo
+      props:['todo'],
+      template:'<li>{{todo.text}}</li>'
+    });
+    var app3 = new Vue({
+      el:'.app3',
+      data:{
+        todos:[
+          {text:'英雄达拉崩吧',id:'1'},
+          {text:'骑上最快的马',id:'2'},
+          {text:'嘿嘿嘿',id:'3'}
+        ]
+      }
+    })
+  </script>
   </body>
 </html>
