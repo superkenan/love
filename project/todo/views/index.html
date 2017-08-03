@@ -84,5 +84,35 @@
       }
     })
   </script>
+  <div id='app4'>
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+  </div>
+  <script>
+    var app4 = new Vue({
+      el:'#app4',
+      data:{
+        message:'英雄达拉崩吧'
+      },
+      computed:{
+        reversedMessage:function(){
+          return this.message.split('').reverse().join('')
+        }
+      }
+    })
+  </script>
+  <!--动态绑定Class-->
+  <div id="app5">
+    <p class="amber" :class="{active:isActive,'text-danger':error}"></p>
+  </div>
+  <script>
+    var app5 = new Vue({
+      el:'#app5',
+      data:{
+        isActive:true,
+        error:true
+      }
+    })
+  </script>
   </body>
 </html>
