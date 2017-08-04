@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的超级大转盘</title>
+    <script src="js/vue.js" type="text/javascript"></script>
+    <style>
+        .turntablePosition{
+            display: block;
+            margin: 100px auto;
+            position: absolute;
+            right: 0;
+            left: 0;
+            /*animation: turn 1s linear infinite;*/
+        }
+        @keyframes turn {
+            0% {transform: rotate(0deg)}
+            50% {transform: rotate(180deg)}
+            100% {transform: rotate(360deg)}
+        }
+    </style>
+</head>
+<body >
+<div class="app container">
+    <img src="img/amber.jpg" alt="" :class="turnTableObj" class="turntablePosition" :style="styleObj">
+</div>
+<script src="js/turn.js"></script>
+</body>
+</html>

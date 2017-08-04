@@ -6,6 +6,14 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
+router.get('/turn', function(req, res, next) {
+  res.render('turntable');
+});
+
 router.post('/login',function(req,res,next){
   console.log(req.body.name);
   console.log(req.body.password);

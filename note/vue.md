@@ -285,3 +285,84 @@ data如下
 说明：  
 1. html模板支持驼峰写法，也支持引号与短横杠相互配合;
 2. 会自动添加css前缀；
+
+## 条件渲染
+
+### `v-if`  
+```html
+    <div v-if='OK'>Yes</div>
+    <div v-else>No</div>
+```
+`v-if`与`v-else`条件渲染
+### 在<template></template>配合
+```html
+    <template v-if="ok">
+      <h1>Title</h1>
+      <p>Paragraph 1</p>
+      <p>Paragraph 2</p>
+    </template>
+```
+### 使用`key`管理可复用的元素
+```html
+    <template v-if="loginType === 'username'">
+     <label>Username</label>
+     <input placeholder="Enter your username">
+    </template>
+    <template v-else>
+     <label>Email</label>
+     <input placeholder="Enter your email address">
+    </template>
+```
+此时切换标签input标签会被复用。当是设置了key属性，则表明为不同的标签，不要复用他们。
+
+### `v-show`与`v-if`
+不同的是带有 v-show 的元素始终会被渲染并保留在 DOM 中。v-show 是简单地切换元素的 CSS 属性 display 。
+
+## 列表渲染
+### `v-for`
+我们用 v-for 指令根据一组数组的选项列表进行渲染。 v-for 指令需要以 item in items 形式的特殊语法， items 是源数据数组并且 item 是数组元素迭代的别名。
+### 基本用法
+```html
+<div v-for='item in items' >{{item.message}}</div>
+<script>
+    ...
+    data:{
+        items:[{message:'a'},{message,'b'}]
+    }
+    ...
+</script>
+```
+在 v-for 块中，我们拥有对父作用域属性的完全访问权限。 v-for 还支持一个可选的第二个参数为当前项的索引。
+```html
+<div v-for='(item,index) in items'>{{parentMessage}}--{{index}}--{{items}}</div>
+<script>
+    ...
+    data:{
+        parentMessage:'哈哈',
+        items:[{message:'a'},{message,'b'}]
+    }
+    ...
+</script>
+```
+### template `v-for`
+```html
+    <ul>
+        <template v-for='item in items'>
+            <li>{{item.message}}</li>
+            <li class="driver"></li>
+        </template>
+    </ul>
+```
+### 对象迭代`v-for`
+```html
+<ul id="example-1">
+    <!--接收一个参数作为value-->
+  <li v-for="value in object">{{value}}</li>
+      <!--接收两个参数作为value-->
+  <li v-for="(value,key) in object">{{key}}--{{value}}</li>
+       <!--接收三个参数作为value--> 
+  <li v-for="(value,key,index) in object">{{key}}--{{value}}</li>       
+</ul>
+
+### 数组更新检测
+push()；pop()；shift()；unshift()；splice()；sort()；reverse()都会触发视图的更新。
